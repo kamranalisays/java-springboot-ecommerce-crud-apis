@@ -1,4 +1,4 @@
-package org.expandablesupportservices;
+package org.expandablesupportservices.ecommerceshop.services;
 
 import org.springframework.stereotype.Service;
 
