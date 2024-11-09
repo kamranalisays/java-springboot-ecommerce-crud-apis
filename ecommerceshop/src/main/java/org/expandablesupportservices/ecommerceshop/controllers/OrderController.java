@@ -16,12 +16,21 @@ public class OrderController {
 	@Autowired
 	OrderService orderService ;
 	
-	@GetMapping
+	@GetMapping("/all")
 	public List<Order> getAllOrders()
 	{
 		return  orderService.getAllOrders();
 		
 	}
+	
+	
+	@GetMapping("/{orderId}")
+	public void getOrderlById()
+	{
+	
+		
+	}
+	
 	
 	
 
