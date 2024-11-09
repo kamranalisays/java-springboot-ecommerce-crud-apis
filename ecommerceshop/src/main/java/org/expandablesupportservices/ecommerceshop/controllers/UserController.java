@@ -1,5 +1,8 @@
 package org.expandablesupportservices.ecommerceshop.controllers;
 
+import java.util.List;
+
+import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +18,9 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping("/all")
-	public void getAllUsers()
+	public List<User> getAllUsers()
 	{
-		
+		return userService.getAllUsers();
 	}
 
 }
