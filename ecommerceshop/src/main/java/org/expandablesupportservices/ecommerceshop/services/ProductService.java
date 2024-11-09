@@ -11,7 +11,7 @@ public class ProductService {
 	
 	
 	
-	public List<Product> getAllProduct()
+	public List<Product> getAllProducts()
 	{
 		
 		return new ArrayList<Product>();
