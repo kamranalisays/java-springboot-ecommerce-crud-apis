@@ -1,6 +1,7 @@
 package org.expandablesupportservices.ecommerceshop.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.expandablesupportservices.ecommerceshop.models.Order;
 import org.expandablesupportservices.ecommerceshop.repositories.OrderRepositoryI;
@@ -19,6 +20,12 @@ public class OrderService {
 		
 		return orderRepositoryI.findAll();
 		
+	}
+
+	
+	public Optional<Order> getOrderById(Long id)
+	{
+		return orderRepositoryI.findById(id);
 	}
 	
 }
