@@ -1,6 +1,7 @@
 package org.expandablesupportservices.ecommerceshop.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.expandablesupportservices.ecommerceshop.models.Product;
 import org.expandablesupportservices.ecommerceshop.services.ProductService;
@@ -28,9 +29,9 @@ public class ProductController {
 	
 	
 	@GetMapping("{/productId}")
-	public void getProductById(@PathVariable String productId)
+	public Optional<Product> getProductById(@PathVariable Long productId)
 	{
-		
+		return productService.getProductById(productId);
 	}
 	
 	
