@@ -1,7 +1,9 @@
 package org.expandablesupportservices.ecommerceshop.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.expandablesupportservices.ecommerceshop.models.Product;
 import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.repositories.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +19,13 @@ public class UserService {
 	{
 		return userRepositoryI.findAll();
 	}
+	
+	public Optional<User> getUserById(Long userId)
+	{
+		
+		return userRepositoryI.findById(userId);
+		
+	}
+	
 
 }
