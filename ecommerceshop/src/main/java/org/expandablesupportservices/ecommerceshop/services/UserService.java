@@ -3,6 +3,7 @@ package org.expandablesupportservices.ecommerceshop.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDTO;
 import org.expandablesupportservices.ecommerceshop.models.Product;
 import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.repositories.UserRepositoryI;
@@ -27,5 +28,15 @@ public class UserService {
 		
 	}
 	
+	
+	public UserDTO createUser(UserDTO userDTO)
+	{
+		
+		User user=userRepositoryI.save(new User());
+	
+		return  userDTO;
+	}
+	
+
 
 }
