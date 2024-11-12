@@ -1,5 +1,6 @@
 package org.expandablesupportservices.ecommerceshop.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,9 @@ import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDTO;
 import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +29,14 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping("/all")
-	public List<User> getAllUsers()
+	public ResponseEntity<?> getAllUsers()
 	{
-		return userService.getAllUsers();
+		
+		Optional<List<User>> userList = userService.getAllUsers();
+		if(userList.isPresent())
+		{return ResponseEntity.ok(userList);}
+		else		
+		return  new ResponseEntity("NO DATA FOUND", HttpStatus.NO_CONTENT);
 	}
 
 	

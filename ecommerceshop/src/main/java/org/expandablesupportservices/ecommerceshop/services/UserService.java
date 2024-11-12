@@ -16,9 +16,9 @@ public class UserService {
 	@Autowired
 	UserRepositoryI userRepositoryI;
 	
-	public List<User> getAllUsers()
+	public Optional<List<User>> getAllUsers()
 	{
-		return userRepositoryI.findAll();
+		return   Optional.of(userRepositoryI.findAll());
 	}
 	
 	public Optional<User> getUserById(Long userId)
