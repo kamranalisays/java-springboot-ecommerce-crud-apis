@@ -7,9 +7,11 @@ import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDTO;
 import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,11 +40,29 @@ public class UserController {
 	
 	
 	
-	@PostMapping("/create/user")
+	@PostMapping("/create")
 	public UserDTO createUser(@RequestBody UserDTO userDTO)
 	{
 		return userService.createUser(userDTO);
 	}
+	
+	
+
+	@PutMapping("/update")
+	public UserDTO updateUser(@RequestBody UserDTO userDTO)
+	{
+		return userService.updateUser(userDTO);
+	}
+	
+	
+
+	@DeleteMapping("/{userId}")
+	public Long deleteUserById(@PathVariable Long userId)
+	{
+		return userService.deleteUserById(userId);
+	}
+	
+	
 	
 	
 	

@@ -37,6 +37,23 @@ public class UserService {
 		return  userDTO;
 	}
 	
+	
+	public UserDTO updateUser(UserDTO userDTO)
+	{
+		
+		userRepositoryI.save(new User());
+	
+		return  userDTO;
+	}
+	
+	public Long deleteUserById(Long userId)
+	{
+		
+		 userRepositoryI.deleteById(userId);
+		 
+		 return userId;
+		
+	}
 
 
 }
