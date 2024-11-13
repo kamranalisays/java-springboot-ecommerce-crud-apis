@@ -14,5 +14,13 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 		
 	}
+	
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<?> UnknownException(NoDataFoundException ex){
+	
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+		
+	}
 
 }

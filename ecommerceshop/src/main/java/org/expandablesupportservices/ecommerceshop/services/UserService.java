@@ -8,6 +8,7 @@ import org.expandablesupportservices.ecommerceshop.models.Product;
 import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.repositories.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,12 +30,15 @@ public class UserService {
 	}
 	
 	
-	public UserDTO createUser(UserDTO userDTO)
+	public ResponseEntity<?> createUser(UserDTO userDTO)
 	{
-		
-		User user=userRepositoryI.save(new User());
 	
-		return  userDTO;
+			User user=userRepositoryI.save(new User());
+			
+		
+		
+	
+		return  new ResponseEntity<UserDTO>(userDTO, null);
 	}
 	
 	
