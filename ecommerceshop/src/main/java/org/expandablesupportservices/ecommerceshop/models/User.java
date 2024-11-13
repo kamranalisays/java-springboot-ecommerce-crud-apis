@@ -1,5 +1,10 @@
 package org.expandablesupportservices.ecommerceshop.models;
 
+import java.sql.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,43 +16,101 @@ import jakarta.persistence.Table;
 public class User {
 
 	@Id
+	@Column(name= "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name="firstName" , nullable = false  )
+	private String firstName ;
+	
+	@Column(name="lastName" )
+	private String LastName;
+	
+	
+	@Column(name="username" , unique= true , nullable = false )
 	private String username;
+	
+	@Column(name="password", nullable =false)
 	private String password;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="mobileNumber" , unique = true)
 	private String mobileNumber;
 	
+	@CreationTimestamp
+	@Column(name="creationDate" , nullable =false ,  updatable = false)
+	private Date creationDate ;
+	
+	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return LastName;
+	}
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
+
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+	
+	
+
 	
 	
 	

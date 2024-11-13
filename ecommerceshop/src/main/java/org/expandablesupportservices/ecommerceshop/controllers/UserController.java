@@ -36,7 +36,7 @@ public class UserController {
 		if(userList.isPresent())
 		{return ResponseEntity.ok(userList);}
 		else		
-		return  new ResponseEntity("NO DATA FOUND", HttpStatus.NO_CONTENT);
+		return  new ResponseEntity<Object>("NO DATA FOUND", HttpStatus.NO_CONTENT);
 	}
 
 	
