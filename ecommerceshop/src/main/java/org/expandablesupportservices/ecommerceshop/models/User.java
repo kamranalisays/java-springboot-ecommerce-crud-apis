@@ -1,6 +1,7 @@
 package org.expandablesupportservices.ecommerceshop.models;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -17,7 +18,7 @@ public class User {
 
 	@Id
 	@Column(name= "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name="firstName" , nullable = false  )
@@ -41,7 +42,7 @@ public class User {
 	
 	@CreationTimestamp
 	@Column(name="creationDate" , nullable =false ,  updatable = false)
-	private Date creationDate ;
+	private LocalDateTime creationDate ;
 	
 	
 
@@ -101,11 +102,11 @@ public class User {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public Date getCreationDate() {
+	public LocalDateTime getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(LocalDateTime creationDate) {
 		this.creationDate = creationDate;
 	}
 	
