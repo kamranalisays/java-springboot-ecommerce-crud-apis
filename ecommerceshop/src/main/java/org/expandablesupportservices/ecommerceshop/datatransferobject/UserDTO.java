@@ -1,5 +1,8 @@
 package org.expandablesupportservices.ecommerceshop.datatransferobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties( ignoreUnknown =true)
 public class UserDTO {
 	
 
@@ -10,6 +13,7 @@ public class UserDTO {
 	private String password;
 	private String email;
 	private String mobileNumber;
+	private String creationTimeStamp;
 	
 	public Long getId() {
 		return id;
@@ -53,7 +57,15 @@ public class UserDTO {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+	public String getCreationTimeStamp() {
+		return creationTimeStamp;
+	}
+	public void setCreationTimeStamp(String creationTimeStamp) {
+		this.creationTimeStamp = creationTimeStamp;
+	}
+	
 
+	
 	
 	
 

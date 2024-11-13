@@ -1,15 +1,9 @@
 package org.expandablesupportservices.ecommerceshop.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDTO;
-import org.expandablesupportservices.ecommerceshop.models.User;
+import org.expandablesupportservices.ecommerceshop.response.ApiResponse;
 import org.expandablesupportservices.ecommerceshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,35 +28,34 @@ public class UserController {
 	public ResponseEntity<?> getAllUsers()
 	{
 		
-		Optional<List<User>> userList = userService.getAllUsers();
-		if(userList.isPresent())
-		{return ResponseEntity.ok(userList);}
-		else		
-		return  new ResponseEntity<Object>("NO DATA FOUND", HttpStatus.NO_CONTENT);
+	return userService.getAllUsers();
+	
+	
 	}
 
 	
 	@GetMapping("/{userId}")
-	public Optional<User> getUserById(@PathVariable Long userId)
+	public ResponseEntity<?> getUserById(@PathVariable Long userId)
 	{
-		return userService.getUserById(userId);
+		return  userService.getUserById(userId);
+		
 	}
 	
 	
 	
 	
 	@PostMapping("/create")
-	public ResponseEntity<?> createUser(@RequestBody UserDTO userDTOP)
+	public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO)
 	{
-		 UserDTO userDTO= userService.createUser(userDTOP);
+		return  userService.createUser(userDTO);
 		 
-		 return ResponseEntity.ok(userDTO);
+		
 	}
 	
 	
 
 	@PutMapping("/update")
-	public UserDTO updateUser(@RequestBody UserDTO userDTO)
+	public ResponseEntity<ApiResponse<UserDTO>> updateUser(@RequestBody UserDTO userDTO)
 	{
 		return userService.updateUser(userDTO);
 	}
@@ -70,7 +63,7 @@ public class UserController {
 	
 
 	@DeleteMapping("/{userId}")
-	public Long deleteUserById(@PathVariable Long userId)
+	public ResponseEntity<ApiResponse<Long>> deleteUserById(@PathVariable Long userId)
 	{
 		return userService.deleteUserById(userId);
 	}
