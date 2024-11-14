@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDTO;
+import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDetailDTO;
 import org.expandablesupportservices.ecommerceshop.models.Product;
 import org.expandablesupportservices.ecommerceshop.models.User;
 import org.expandablesupportservices.ecommerceshop.models.UserDetail;
@@ -48,7 +49,14 @@ public class UserService {
 		 userDTO.setEmail(user.get().getEmail());
 		 userDTO.setMobileNumber(user.get().getMobileNumber());
 		 userDTO.setCreationTimeStamp(user.get().getCreationDate().toString());
-
+		 
+		 UserDetailDTO userDetailDTO=new UserDetailDTO();
+		 userDetailDTO.setId(user.get().getUserDetail().getId());
+		 userDetailDTO.setCity(user.get().getUserDetail().getCity());
+		 
+		 userDTO.setUserDetailDTO(userDetailDTO);
+		 
+		 
 		 } 
 		 else
 		 {
