@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.expandablesupportservices.ecommerceshop.datatransferobject.UserDTO;
 import org.expandablesupportservices.ecommerceshop.models.Product;
 import org.expandablesupportservices.ecommerceshop.models.User;
+import org.expandablesupportservices.ecommerceshop.models.UserDetail;
 import org.expandablesupportservices.ecommerceshop.repositories.UserRepositoryI;
 import org.expandablesupportservices.ecommerceshop.response.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +110,12 @@ public class UserService {
 		user.setMobileNumber(userDTO.getMobileNumber());
 		user.setPassword(userDTO.getPassword());
 		user.setUsername(userDTO.getUsername());
+		
+		UserDetail userDetail =new UserDetail();
+	
+		userDetail.setCity(userDTO.getUserDetailDTO().getCity());
+		
+		user.setUserDetail(userDetail);
 		
 		return user;
 	}

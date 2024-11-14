@@ -14,6 +14,7 @@ public class UserDTO {
 	private String email;
 	private String mobileNumber;
 	private String creationTimeStamp;
+	private UserDetailDTO userDetailDTO;
 	
 	public Long getId() {
 		return id;
@@ -62,6 +63,12 @@ public class UserDTO {
 	}
 	public void setCreationTimeStamp(String creationTimeStamp) {
 		this.creationTimeStamp = creationTimeStamp;
+	}
+	public UserDetailDTO getUserDetailDTO() {
+		return userDetailDTO;
+	}
+	public void setUserDetailDTO(UserDetailDTO userDetailDTO) {
+		this.userDetailDTO = userDetailDTO;
 	}
 	
 
