@@ -62,7 +62,7 @@ public class UserController {
 	
 	
 
-	@DeleteMapping("/{userId}")
+	@DeleteMapping("/delete/{userId}")
 	public ResponseEntity<ApiResponse<Long>> deleteUserById(@PathVariable Long userId)
 	{
 		return userService.deleteUserById(userId);
