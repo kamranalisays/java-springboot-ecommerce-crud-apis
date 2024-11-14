@@ -1,10 +1,12 @@
 package org.expandablesupportservices.ecommerceshop.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +25,13 @@ public class UserDetail {
 	
 	@Column(name = "city")
 	private String city;
+	
+	/* Bi directional 
+	 * 
+	 */
+	@OneToOne(mappedBy = "userDetail" ,cascade = CascadeType.ALL)
+	private User user;
+	
 	
 	public Long getId() {
 		return id;
@@ -48,8 +57,11 @@ public class UserDetail {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	
-	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }
