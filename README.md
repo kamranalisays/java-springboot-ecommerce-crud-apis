@@ -7,7 +7,6 @@ MySQL
 
 # APIs
 
-# User
-# GET
+# User GET
 1) localhost:8080/api/user/all
 
