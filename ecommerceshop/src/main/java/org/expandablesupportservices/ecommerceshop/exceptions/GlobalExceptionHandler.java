@@ -9,29 +9,25 @@ import org.springframework.web.context.request.WebRequest;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-	
-	
+
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<?> UnknownException(Exception ex , WebRequest webRequest){
-			
-		ErrorResponse errorResponse=new ErrorResponse( 
-				HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+	public ResponseEntity<?> UnknownException(Exception ex, WebRequest webRequest) {
+
+		ErrorResponse errorResponse = new ErrorResponse(
+				HttpStatus.INTERNAL_SERVER_ERROR.value(),
 				HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
 				ex.getMessage(),
 				webRequest.getDescription(false));
-	
-		return new ResponseEntity<>(errorResponse,	HttpStatus.INTERNAL_SERVER_ERROR);
-		
+
+		return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+
 	}
 
-	
 	@ExceptionHandler(NoDataFoundException.class)
-	public ResponseEntity<?> NoDataFoundException(NoDataFoundException ex){
-	
+	public ResponseEntity<?> NoDataFoundException(NoDataFoundException ex) {
+
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-		
+
 	}
-	
-	
 
 }

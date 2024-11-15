@@ -17,70 +17,55 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-
-
 @Configuration
 public class SecurityConfig {
 
-
-	
 	@Bean
 	public InMemoryUserDetailsManager userDetailsManager() {
-		
-		
-		UserDetails kamran= User.builder()
+
+		UserDetails kamran = User.builder()
 				.username("kamran")
 				.password("{noop}test123")
 				.roles("CUSTOMER")
 				.build();
-		
-		UserDetails ali= User.builder()
+
+		UserDetails ali = User.builder()
 				.username("ali")
 				.password("{noop}test123")
-				.roles("CUSTOMER","MANAGER")
+				.roles("CUSTOMER", "MANAGER")
 				.build();
-		
-		UserDetails john= User.builder()
+
+		UserDetails john = User.builder()
 				.username("john")
 				.password("{noop}test123")
-				.roles("CUSTOMER","MANAGER","ADMIN")
+				.roles("CUSTOMER", "MANAGER", "ADMIN")
 				.build();
-		
-		
-		return new InMemoryUserDetailsManager(kamran,ali,john);
-		
+
+		return new InMemoryUserDetailsManager(kamran, ali, john);
+
 	}
-	
-	
-	
-	
-	
+
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception 
-	{
-		
-	httpSecurity.authorizeHttpRequests(configure ->
-	configure
-	.requestMatchers(HttpMethod.GET, "/").permitAll()	
-	.requestMatchers(HttpMethod.GET, "/api/customer").hasRole("CUSTOMER")	
-	.requestMatchers(HttpMethod.GET, "/api/customer/**").hasRole("CUSTOMER")	
-	.requestMatchers(HttpMethod.POST, "/api/customer").hasRole("MANAGER")	
-	.requestMatchers(HttpMethod.PUT, "/api/customer").hasRole("MANAGER")	
-	.requestMatchers(HttpMethod.DELETE, "/api/customer/**").hasRole("ADMIN")
-	.requestMatchers(HttpMethod.GET ,"/api/user/create").permitAll()
-	.anyRequest().authenticated()
-		
-			);
-	
-	httpSecurity.httpBasic(Customizer.withDefaults());
-	
-	httpSecurity.csrf(csrf->csrf.disable());
-	
-	return httpSecurity.build();
-		
-	
-		
+	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+
+		httpSecurity.authorizeHttpRequests(configure -> configure
+				.requestMatchers(HttpMethod.GET, "/").permitAll()
+				.requestMatchers(HttpMethod.GET, "/api/customer").hasRole("CUSTOMER")
+				.requestMatchers(HttpMethod.GET, "/api/customer/**").hasRole("CUSTOMER")
+				.requestMatchers(HttpMethod.POST, "/api/customer").hasRole("MANAGER")
+				.requestMatchers(HttpMethod.PUT, "/api/customer").hasRole("MANAGER")
+				.requestMatchers(HttpMethod.DELETE, "/api/customer/**").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.GET, "/api/user/create").permitAll()
+				.anyRequest().authenticated()
+
+		);
+
+		httpSecurity.httpBasic(Customizer.withDefaults());
+
+		httpSecurity.csrf(csrf -> csrf.disable());
+
+		return httpSecurity.build();
+
 	}
-	
-	
+
 }

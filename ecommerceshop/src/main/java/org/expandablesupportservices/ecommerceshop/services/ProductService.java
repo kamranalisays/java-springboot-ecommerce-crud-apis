@@ -10,28 +10,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductService {
-	
+
 	@Autowired
 	ProductRepositoryI productRepositoryI;
-	
-	
-	public List<Product> getAllProducts()
-	{
-		
+
+	public List<Product> getAllProducts() {
+
 		return productRepositoryI.findAll();
-		
+
 	}
-	
-	
-	
-	public Optional<Product> getProductById(Long productId)
-	{
-		
+
+	public Optional<Product> getProductById(Long productId) {
+
 		return productRepositoryI.findById(productId);
-		
+
 	}
-	
-	
-	
-	
+
 }

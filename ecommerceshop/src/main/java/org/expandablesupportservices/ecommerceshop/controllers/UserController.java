@@ -19,64 +19,42 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/user")
 public class UserController {
-	
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@GetMapping("/all")
-	public ResponseEntity<?> getAllUsers()
-	{
-		
-	return userService.getAllUsers();
-	
-	
+	public ResponseEntity<?> getAllUsers() {
+
+		return userService.getAllUsers();
+
 	}
 
-	
 	@GetMapping("/{userId}")
-	public ResponseEntity<?> getUserById(@PathVariable Long userId)
-	{
-		return  userService.getUserById(userId);
-		
+	public ResponseEntity<?> getUserById(@PathVariable Long userId) {
+		return userService.getUserById(userId);
+
 	}
-	
-	
-	
-	
+
 	@PostMapping("/create")
-	public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO)
-	{
-		return  userService.createUser(userDTO);
-		 
-		
+	public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
+		return userService.createUser(userDTO);
+
 	}
-	
-	
 
 	@PutMapping("/update")
-	public ResponseEntity<ApiResponse<UserDTO>> updateUser(@RequestBody UserDTO userDTO)
-	{
+	public ResponseEntity<ApiResponse<UserDTO>> updateUser(@RequestBody UserDTO userDTO) {
 		return userService.updateUser(userDTO);
 	}
-	
-	
 
 	@DeleteMapping("/delete/{userId}")
-	public ResponseEntity<ApiResponse<Long>> deleteUserById(@PathVariable Long userId)
-	{
+	public ResponseEntity<ApiResponse<Long>> deleteUserById(@PathVariable Long userId) {
 		return userService.deleteUserById(userId);
 	}
-	
-	
-	
 
 	@DeleteMapping("/delete/all")
-	public ResponseEntity<ApiResponse<String>> deleteAll()
-	{
+	public ResponseEntity<ApiResponse<String>> deleteAllUsers() {
 		return userService.deleteAll();
 	}
-	
-	
-	
+
 }

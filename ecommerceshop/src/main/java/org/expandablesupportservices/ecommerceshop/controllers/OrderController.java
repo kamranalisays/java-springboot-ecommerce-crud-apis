@@ -16,25 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
 
 	@Autowired
-	OrderService orderService ;
-	
+	OrderService orderService;
+
 	@GetMapping("/all")
-	public List<Order> getAllOrders()
-	{
-		return  orderService.getAllOrders();
-		
+	public List<Order> getAllOrders() {
+		return orderService.getAllOrders();
+
 	}
-	
-	
+
 	@GetMapping("/{orderId}")
-	public Optional<Order> getOrderlById(@PathVariable Long orderId)
-	{
+	public Optional<Order> getOrderlById(@PathVariable Long orderId) {
 		return orderService.getOrderById(orderId);
 	}
-	
-	
-	
 
-	
-	
 }

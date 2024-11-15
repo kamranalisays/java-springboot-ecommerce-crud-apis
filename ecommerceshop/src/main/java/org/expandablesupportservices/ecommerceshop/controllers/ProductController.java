@@ -11,29 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
-	
-	
+
 	@Autowired
 	ProductService productService;
-	
-	
+
 	@GetMapping("/all")
-	public  List<Product> getAllProducts(){
-		
-	return	productService.getAllProducts();
+	public List<Product> getAllProducts() {
+
+		return productService.getAllProducts();
 	}
-	
-	
+
 	@GetMapping("/{productId}")
-	public Optional<Product> getProductById(@PathVariable Long productId)
-	{
+	public Optional<Product> getProductById(@PathVariable Long productId) {
 		return productService.getProductById(productId);
 	}
-	
-	
-	
+
 }
