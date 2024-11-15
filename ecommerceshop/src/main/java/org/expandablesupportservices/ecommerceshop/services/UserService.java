@@ -26,7 +26,6 @@ public class UserService {
 	{
 		List<User> userList =  userRepositoryI.findAll();
 
-		 
 		 ApiResponse<List<User>> apiResponse=new ApiResponse<List<User>>( "success", userList  );
 		 return ResponseEntity.ok(apiResponse);
 
