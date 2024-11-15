@@ -70,6 +70,13 @@ public class UserController {
 	
 	
 	
+
+	@DeleteMapping("/delete/all")
+	public ResponseEntity<ApiResponse<String>> deleteAll()
+	{
+		return userService.deleteAll();
+	}
+	
 	
 	
 }

@@ -1,5 +1,6 @@
 package org.expandablesupportservices.ecommerceshop.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @Service
 public class UserService {
@@ -22,11 +24,16 @@ public class UserService {
 	@Autowired
 	UserRepositoryI userRepositoryI;
 	
-	public ResponseEntity<ApiResponse<List<User>>> getAllUsers()
+	public ResponseEntity<ApiResponse<List<UserDTO>>> getAllUsers()
 	{
 		List<User> userList =  userRepositoryI.findAll();
+		List<UserDTO> userDTOList=new ArrayList<>();
+		
 
-		 ApiResponse<List<User>> apiResponse=new ApiResponse<List<User>>( "success", userList  );
+		userList.forEach(user -> userDTOList.add(convertUserToUserDTO(user))) ;
+	
+		
+		 ApiResponse<List<UserDTO>> apiResponse=new ApiResponse<List<UserDTO>>( "success", userDTOList  );
 		 return ResponseEntity.ok(apiResponse);
 
 	}
@@ -40,22 +47,8 @@ public class UserService {
 		
 		 if(user.isPresent())
 		 {
-		 userDTO.setId(userId);
-		 userDTO.setFirstName(user.get().getFirstName());
-		 userDTO.setLastName(user.get().getLastName());
-		 userDTO.setUsername(user.get().getUsername());
-		 userDTO.setPassword(user.get().getPassword());
-		 userDTO.setEmail(user.get().getEmail());
-		 userDTO.setMobileNumber(user.get().getMobileNumber());
-		 userDTO.setCreationTimeStamp(user.get().getCreationDate().toString());
-		 
-		 UserDetailDTO userDetailDTO=new UserDetailDTO();
-		 userDetailDTO.setId(user.get().getUserDetail().getId());
-		 userDetailDTO.setCity(user.get().getUserDetail().getCity());
-		 
-		 userDTO.setUserDetailDTO(userDetailDTO);
-		 
-		 
+			 userDTO = convertUserToUserDTO(user.get()) ;
+		
 		 } 
 		 else
 		 {
@@ -107,6 +100,19 @@ public class UserService {
 		
 	}
 
+	
+
+	public ResponseEntity<ApiResponse<String>> deleteAll()
+	{
+		
+		 userRepositoryI.deleteAll();
+		
+		 ApiResponse<String> apiResponse=new ApiResponse<String>( "success", ""  );
+		 return ResponseEntity.ok(apiResponse);
+	}
+	
+	
+	
 	private User convertUserDTOToUser(UserDTO userDTO)
 	{
 		User user=new User();
