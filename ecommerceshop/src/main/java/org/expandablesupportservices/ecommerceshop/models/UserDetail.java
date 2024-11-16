@@ -26,11 +26,6 @@ public class UserDetail {
 	@Column(name = "city")
 	private String city;
 	
-	/* Bi directional 
-	 * 
-	 */
-	@OneToOne(mappedBy = "userDetail" ,cascade = CascadeType.ALL)
-	private User user;
 
 	public Long getUserDetailId() {
 		return userDetailId;
@@ -64,15 +59,7 @@ public class UserDetail {
 		this.city = city;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	
 	
 	
 	

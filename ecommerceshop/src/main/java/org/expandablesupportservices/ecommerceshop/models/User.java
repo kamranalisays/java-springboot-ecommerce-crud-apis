@@ -52,8 +52,9 @@ public class User {
 	@JoinColumn(name = "userDetailId")
 	private UserDetail userDetail;
 	
-	@OneToMany(mappedBy = "user" , cascade = {CascadeType.PERSIST , CascadeType.MERGE , 
+	@OneToMany(  cascade = {CascadeType.PERSIST , CascadeType.MERGE , 
 			CascadeType.REFRESH, CascadeType.DETACH})
+	@JoinColumn(name = "customer_id")
 	private List<Order> orderList;
 
 	public Long getUserId() {
