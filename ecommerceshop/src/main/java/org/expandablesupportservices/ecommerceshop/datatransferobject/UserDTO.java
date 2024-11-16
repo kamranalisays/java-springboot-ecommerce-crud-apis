@@ -70,6 +70,12 @@ public class UserDTO {
 	public void setUserDetailDTO(UserDetailDTO userDetailDTO) {
 		this.userDetailDTO = userDetailDTO;
 	}
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", firstName=" + firstName + ", LastName=" + LastName + ", username=" + username
+				+ ", password=" + password + ", email=" + email + ", mobileNumber=" + mobileNumber
+				+ ", creationTimeStamp=" + creationTimeStamp + ", userDetailDTO=" + userDetailDTO + "]";
+	}
 	
 
 	

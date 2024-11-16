@@ -1,0 +1,11 @@
+[
+	{
+    "firstName"  : "Kamran" ,
+    "lastName" : "Ali" ,
+    "username" : "user01" ,
+    "password" : "gate123" , 
+    "email" : "kamranali.says@gmail.com" ,
+	"mobileNumber" : "123456789" ,
+     "userDetailDTO" : {"id" : 1 ,"city" : "london"  }
+	}
+]

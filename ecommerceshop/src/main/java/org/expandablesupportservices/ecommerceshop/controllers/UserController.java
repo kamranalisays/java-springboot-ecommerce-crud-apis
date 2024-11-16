@@ -24,13 +24,13 @@ public class UserController {
 	UserService userService;
 
 	@GetMapping("/all")
-	public ResponseEntity<?> getAllUsers() {
+	public ResponseEntity<?> getAllUsers()  throws Exception  {
 
 		return userService.getAllUsers();
 
 	}
 
-	@GetMapping("/{userId}")
+	@GetMapping("/id/{userId}")
 	public ResponseEntity<?> getUserById(@PathVariable Long userId) {
 		return userService.getUserById(userId);
 

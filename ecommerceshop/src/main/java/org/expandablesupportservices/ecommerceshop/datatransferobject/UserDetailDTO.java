@@ -1,6 +1,8 @@
 package org.expandablesupportservices.ecommerceshop.datatransferobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties( ignoreUnknown =true)
 public class UserDetailDTO {
 	
 	
@@ -33,6 +35,11 @@ public class UserDetailDTO {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	@Override
+	public String toString() {
+		return "UserDetailDTO [id=" + id + ", dateOfBirth=" + dateOfBirth + ", profilePictureUrl=" + profilePictureUrl
+				+ ", city=" + city + "]";
 	}
 	
 	

@@ -1,13 +1,16 @@
 package org.expandablesupportservices.ecommerceshop.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.expandablesupportservices.ecommerceshop.models.Order;
+import org.expandablesupportservices.ecommerceshop.datatransferobject.OrderDTO;
+import org.expandablesupportservices.ecommerceshop.response.ApiResponse;
 import org.expandablesupportservices.ecommerceshop.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,15 +21,40 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 
+
 	@GetMapping("/all")
-	public List<Order> getAllOrders() {
+	public ResponseEntity<?> getAllOrders() throws Exception  {
+
 		return orderService.getAllOrders();
 
 	}
 
-	@GetMapping("/{orderId}")
-	public Optional<Order> getOrderlById(@PathVariable Long orderId) {
+	@GetMapping("/id/{orderId}")
+	public ResponseEntity<?> getOrderById(@PathVariable Long orderId) {
 		return orderService.getOrderById(orderId);
+
 	}
+
+	@PostMapping("/submit")
+	public ResponseEntity<?> submitOrder(@RequestBody OrderDTO orderDTO) {
+		return orderService.submitOrder(orderDTO);
+
+	}
+
+	@PutMapping("/update")
+	public ResponseEntity<?> updateOrder(@RequestBody OrderDTO orderDTO) {
+		return orderService.updateOrder(orderDTO);
+	}
+
+	@DeleteMapping("/delete/{orderId}")
+	public ResponseEntity<?> deleteOrderById(@PathVariable Long orderId) {
+		return orderService.deleteOrderById(orderId);
+	}
+
+	@DeleteMapping("/delete/all")
+	public ResponseEntity<ApiResponse<String>> deleteAllOrders() {
+		return orderService.deleteAllOrders();
+	}
+
 
 }

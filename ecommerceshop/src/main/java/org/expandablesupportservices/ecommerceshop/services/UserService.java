@@ -18,8 +18,10 @@ public class UserService {
 
 	@Autowired
 	UserRepositoryI userRepositoryI;
+	
 
-	public ResponseEntity<ApiResponse<List<UserDTO>>> getAllUsers() {
+	public ResponseEntity<ApiResponse<List<UserDTO>>> getAllUsers() throws Exception {
+		
 		List<User> userList = userRepositoryI.findAll();
 		List<UserDTO> userDTOList = new ArrayList<>();
 
@@ -28,6 +30,7 @@ public class UserService {
 		ApiResponse<List<UserDTO>> apiResponse = new ApiResponse<List<UserDTO>>("success", userDTOList);
 		return ResponseEntity.ok(apiResponse);
 
+	
 	}
 
 	public ResponseEntity<ApiResponse<UserDTO>> getUserById(Long userId) {
