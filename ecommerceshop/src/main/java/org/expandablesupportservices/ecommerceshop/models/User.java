@@ -1,7 +1,7 @@
 package org.expandablesupportservices.ecommerceshop.models;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,9 +21,9 @@ import jakarta.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name= "id")
+	@Column(name= "userId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long userId;
 	
 	@Column(name="firstName" , nullable = false  )
 	private String firstName ;
@@ -51,13 +52,16 @@ public class User {
 	@JoinColumn(name = "userDetailId")
 	private UserDetail userDetail;
 	
+	@OneToMany(mappedBy = "user" , cascade = {CascadeType.PERSIST , CascadeType.MERGE , 
+			CascadeType.REFRESH, CascadeType.DETACH})
+	private List<Order> orderList;
 
-	public Long getId() {
-		return id;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -123,10 +127,18 @@ public class User {
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
+
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
 	
 	
 
-	
+
 	
 	
 }

@@ -55,7 +55,7 @@ public class UserService {
 
 		user = userRepositoryI.save(user);
 
-		userDTO.setId(user.getId());
+		userDTO.setId(user.getUserId());
 
 		ApiResponse<UserDTO> apiResponse = new ApiResponse<UserDTO>("success", userDTO);
 		return ResponseEntity.ok(apiResponse);
@@ -111,7 +111,7 @@ public class UserService {
 	private UserDTO convertUserToUserDTO(User user) {
 		UserDTO userDTO = new UserDTO();
 
-		userDTO.setId(user.getId());
+		userDTO.setId(user.getUserId());
 		userDTO.setFirstName(user.getFirstName());
 		userDTO.setLastName(user.getLastName());
 		userDTO.setUsername(user.getUsername());

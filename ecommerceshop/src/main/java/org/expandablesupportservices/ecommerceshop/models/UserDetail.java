@@ -15,7 +15,7 @@ public class UserDetail {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long userDetailId;
 	
 	@Column(name = "dateOfBirth")
 	private String dateOfBirth;
@@ -31,37 +31,49 @@ public class UserDetail {
 	 */
 	@OneToOne(mappedBy = "userDetail" ,cascade = CascadeType.ALL)
 	private User user;
-	
-	
-	public Long getId() {
-		return id;
+
+	public Long getUserDetailId() {
+		return userDetailId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setUserDetailId(Long userDetailId) {
+		this.userDetailId = userDetailId;
 	}
+
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
+
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
 	public String getProfilePictureUrl() {
 		return profilePictureUrl;
 	}
+
 	public void setProfilePictureUrl(String profilePictureUrl) {
 		this.profilePictureUrl = profilePictureUrl;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
+	
+	
+	
+	
 }
