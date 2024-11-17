@@ -2,15 +2,23 @@ package org.expandablesupportservices.ecommerceshop.datatransferobject;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+
 @JsonIgnoreProperties( ignoreUnknown =true)
 public class UserDTO {
 	
 
 	private Long id;
+	
+	@NotNull(message = "firstName cannot be null")
 	private String firstName ;
 	private String LastName;
 	private String username;
 	private String password;
+    private String token;
+	
+	@Email(message = "Email should be valid")
 	private String email;
 	private String mobileNumber;
 	private String creationTimeStamp;
