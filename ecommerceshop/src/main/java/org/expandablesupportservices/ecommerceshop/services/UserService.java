@@ -51,9 +51,9 @@ public class UserService {
 	}
 
 	public ResponseEntity<ApiResponse<UserDTO>> createUser(UserDTO userDTO) {
-		User user = convertUserDTOToUser(userDTO);
+		User convertedToUser = convertUserDTOToUser(userDTO);
 
-		user = userRepositoryI.save(user);
+		User user = userRepositoryI.save(convertedToUser);
 
 		userDTO.setId(user.getUserId());
 
