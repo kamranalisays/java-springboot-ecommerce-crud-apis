@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
@@ -36,13 +38,13 @@ public class OrderController {
 	}
 
 	@PostMapping("/submit")
-	public ResponseEntity<?> submitOrder(@RequestBody OrderDTO orderDTO) {
+	public ResponseEntity<?> submitOrder(@Valid @RequestBody OrderDTO orderDTO) {
 		return orderService.submitOrder(orderDTO);
 
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<?> updateOrder(@RequestBody OrderDTO orderDTO) {
+	public ResponseEntity<?> updateOrder(@Valid @RequestBody OrderDTO orderDTO) {
 		return orderService.updateOrder(orderDTO);
 	}
 
@@ -52,7 +54,7 @@ public class OrderController {
 	}
 
 	@DeleteMapping("/delete/all")
-	public ResponseEntity<ApiResponse<String>> deleteAllOrders() {
+	public ResponseEntity<?> deleteAllOrders() {
 		return orderService.deleteAllOrders();
 	}
 

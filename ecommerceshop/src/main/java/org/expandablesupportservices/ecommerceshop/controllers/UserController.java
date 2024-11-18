@@ -46,17 +46,17 @@ public class UserController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<ApiResponse<UserDTO>> updateUser(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<?> updateUser(@Valid @RequestBody UserDTO userDTO) {
 		return userService.updateUser(userDTO);
 	}
 
 	@DeleteMapping("/delete/{userId}")
-	public ResponseEntity<ApiResponse<Long>> deleteUserById(@PathVariable Long userId) {
+	public ResponseEntity<?> deleteUserById(@PathVariable Long userId) {
 		return userService.deleteUserById(userId);
 	}
 
 	@DeleteMapping("/delete/all")
-	public ResponseEntity<ApiResponse<String>> deleteAllUsers() {
+	public ResponseEntity<?> deleteAllUsers() {
 		return userService.deleteAll();
 	}
 
