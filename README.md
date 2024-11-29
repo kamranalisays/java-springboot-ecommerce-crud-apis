@@ -7,6 +7,7 @@
 2) Springboot
 3) MySQL
 4) Hibernate
+5) Maven
 
 # Project Structure
 
