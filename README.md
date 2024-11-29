@@ -1,5 +1,5 @@
-# Fully Customizable
- You have the java backend code , You can customize it according to your needs.
+# Fully Customizable and Extendable
+You have the backend code , You can extend it according to your needs.
 
 # Tech Stack - Backend
 
